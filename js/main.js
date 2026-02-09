@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         
@@ -77,40 +75,16 @@ if (contactForm) {
         submitBtn.textContent = 'Envoi en cours...';
         submitBtn.style.opacity = '0.7';
         
-        try {
-            // Si Formspree est configuré, laisser le formulaire se soumettre normalement
-            if (this.action && this.action.includes('formspree.io')) {
-                // Pour Formspree, on laisse le formulaire se soumettre normalement
-                this.submit();
-                return;
-            }
-            
-            // Sinon, utiliser le script PHP local
-            const formData = new FormData(this);
-            
-            const response = await fetch('contact.php', {
-                method: 'POST',
-                body: formData
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                showMessage(result.message, 'success');
-                this.reset();
-            } else {
-                showMessage(result.message, 'error');
-            }
-            
-        } catch (error) {
-            console.error('Erreur:', error);
-            showMessage('Erreur de connexion. Veuillez réessayer ou me contacter directement.', 'error');
-        } finally {
-            // Restaurer le bouton
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-            submitBtn.style.opacity = '1';
-        }
+        // Pour Formspree, on laisse le formulaire se soumettre normalement
+        // Formspree se chargera de tout et redirigera vers une page de confirmation
+        
+        // Optionnel: afficher un message local avant la redirection Formspree
+        setTimeout(() => {
+            showMessage('Redirection vers la page de confirmation...', 'info');
+        }, 100);
+        
+        // Le formulaire se soumet normalement vers Formspree
+        // Pas de e.preventDefault() pour laisser Formspree gérer
     });
 }
 
