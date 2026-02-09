@@ -150,7 +150,7 @@ body {
     display: flex;
     align-items: center;
     padding: 120px 20px 80px;
-    background: linear-gradient(180deg, #eff6ff 0%, #f0f9ff 30%, #f8fafc 70%, #ffffff 100%);
+    background: linear-gradient(180deg, #adcaf0 0%, #f0f9ff 30%, #f8fafc 70%, #ffffff 100%);
     color: var(--text-color);
     position: relative;
     overflow: hidden;
