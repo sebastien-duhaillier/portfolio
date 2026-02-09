@@ -532,6 +532,19 @@ section {
     color: var(--text-light);
 }
 
+/* Liens de contact cliquables */
+.contact-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
