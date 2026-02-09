@@ -66,18 +66,51 @@ document.addEventListener('DOMContentLoaded', () => {
 // Gestion du formulaire de contact
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Récupération des données du formulaire
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
         
-        // Simulation d'envoi (remplacer par votre logique d'envoi)
-        showMessage('Message envoyé avec succès ! Je vous répondrai bientôt.', 'success');
+        // Animation de chargement
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+        submitBtn.style.opacity = '0.7';
         
-        // Reset du formulaire
-        this.reset();
+        try {
+            // Si Formspree est configuré, laisser le formulaire se soumettre normalement
+            if (this.action && this.action.includes('formspree.io')) {
+                // Pour Formspree, on laisse le formulaire se soumettre normalement
+                this.submit();
+                return;
+            }
+            
+            // Sinon, utiliser le script PHP local
+            const formData = new FormData(this);
+            
+            const response = await fetch('contact.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                showMessage(result.message, 'success');
+                this.reset();
+            } else {
+                showMessage(result.message, 'error');
+            }
+            
+        } catch (error) {
+            console.error('Erreur:', error);
+            showMessage('Erreur de connexion. Veuillez réessayer ou me contacter directement.', 'error');
+        } finally {
+            // Restaurer le bouton
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            submitBtn.style.opacity = '1';
+        }
     });
 }
 
