@@ -56,11 +56,16 @@ body {
     color: var(--text-color);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    background: #f3f7fd; /* bleu très léger sur tout le body */
+    background: rgb(208, 231, 245); /* Ancien fond bleu très léger (remplacé par la règle globale ci-dessous) */
 }
 
+/*
+   On force le fond bleu très léger sur toute la page avec !important pour s'assurer
+   qu'aucune autre règle CSS (même dans les sections ou composants) ne puisse écraser cette couleur.
+   !important donne la priorité absolue à cette déclaration, même si d'autres règles sont plus spécifiques.
+*/
 html, body {
-    background: #f3f7fd !important;
+    background: #96bbf7 !important;
 }
 
 .container {
