@@ -59,6 +59,10 @@ body {
     background: #f3f7fd; /* bleu très léger sur tout le body */
 }
 
+html, body {
+    background: #f3f7fd !important;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -326,6 +330,7 @@ body {
 /* Sections - Défilement normal sans effets de masquage */
 section {
     padding: 100px 0;
+    background: transparent;
 }
 
 /* Titre de section visible immédiatement */
