@@ -1,0 +1,24 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'éditeur
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Dossiers temporaires
+tmp/
+temp/
+
+# Node modules (si ajouté plus tard)
+node_modules/
+
+# Fichiers de configuration locaux
+.env
+.env.local
+.env.production

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV ATS et IA de Sébastien Duhaillier - Développeur Web Full Stack en alternance CDA à partir d'août 2026">
+    <meta name="robots" content="index,follow">
+    <title>CV IA - Sébastien Duhaillier</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --muted: #475569;
+            --soft: #e2e8f0;
+            --bg: #f8fafc;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--primary);
+            background: var(--bg);
+        }
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 32px 20px 48px;
+        }
+        .topbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: white;
+            border: 1px solid var(--soft);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .actions a {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--accent);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        .actions a.secondary {
+            background: white;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--soft);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+            margin-bottom: 18px;
+        }
+        h1, h2, h3 { margin: 0 0 12px; }
+        h1 { font-size: 2rem; }
+        h2 {
+            font-size: 1.15rem;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--soft);
+            margin-bottom: 14px;
+        }
+        .meta {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .item {
+            padding: 14px;
+            border: 1px solid var(--soft);
+            border-radius: 14px;
+            background: #fff;
+        }
+        ul { margin: 10px 0 0 20px; padding: 0; }
+        li { margin-bottom: 6px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+        .subtle { color: var(--muted); font-size: 0.96rem; }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 14px;
+        }
+        .contact-list { list-style: none; margin-left: 0; }
+        .contact-list li { margin-bottom: 8px; }
+        .note {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+        @media (max-width: 720px) {
+            .two-col { grid-template-columns: 1fr; }
+            h1 { font-size: 1.65rem; }
+        }
+        @media print {
+            body { background: white; }
+            .topbar, .actions { display: none; }
+            .page { padding: 0; max-width: none; }
+            .card { box-shadow: none; border-radius: 0; border-left: 0; border-right: 0; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sébastien Duhaillier",
+        "jobTitle": "Développeur Web Full Stack",
+        "description": "Candidat à une alternance Concepteur Développeur d'Application à partir d'août 2026 au CESI de Nanterre.",
+        "email": "duhaillier.sebastien@free.fr",
+        "telephone": "+33778865148",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Chéroy",
+            "postalCode": "89690",
+            "addressCountry": "FR"
+        },
+        "sameAs": [
+            "https://github.com/sebastien-duhaillier",
+            "https://www.linkedin.com/in/s%C3%A9bastien-duhaillier-37a3bb2a9/"
+        ],
+        "knowsAbout": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "SvelteKit",
+            "Vite",
+            "Node.js",
+            "Express",
+            "API REST",
+            "PostgreSQL",
+            "Neon",
+            "Railway",
+            "Vercel",
+            "Formspree",
+            "localStorage",
+            "IntersectionObserver",
+            "Méthode Agile",
+            "Merise",
+            "MCD",
+            "MLD",
+            "User stories"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <main class="page">
+        <div class="topbar">
+            <div class="badge">CV IA / ATS</div>
+            <div class="actions">
+                <a href="cv-ai.html" onclick="window.print(); return false;">Imprimer / PDF</a>
+                <a class="secondary" href="../index.html#cv">Retour au portfolio</a>
+            </div>
+        </div>
+
+        <section class="card">
+            <h1>Sébastien Duhaillier</h1>
+            <p class="meta">Développeur Web Full Stack | Alternance Concepteur Développeur d'Application à partir d'août 2026 | CESI Nanterre</p>
+            <div class="two-col">
+                <div>
+                    <h2>Profil</h2>
+                    <p>Développeur web en formation, issu de la vente et orienté besoin client. Je cherche une alternance Concepteur Développeur d'Application à partir d'août 2026 au CESI de Nanterre. Je travaille sur des projets web concrets avec une approche orientée fonctionnalité, clarté technique et retour utilisateur.</p>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul class="contact-list">
+                        <li>Email : duhaillier.sebastien@free.fr</li>
+                        <li>Téléphone : 07 78 86 51 48</li>
+                        <li>Localisation : Chéroy (89690), France</li>
+                        <li>LinkedIn : linkedin.com/in/sébastien-duhaillier-37a3bb2a9</li>
+                        <li>GitHub : github.com/sebastien-duhaillier</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Compétences</h2>
+            <div class="grid">
+                <div class="item">
+                    <h3>Conception</h3>
+                    <div class="tags">
+                        <span class="tag">Méthode Agile</span>
+                        <span class="tag">Merise</span>
+                        <span class="tag">MCD / MLD</span>
+                        <span class="tag">User stories</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>Frontend</h3>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SvelteKit</span>
+                        <span class="tag">Vite</span>
+                        <span class="tag">Responsive design</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3>Backend & BDD</h3>
+                    <div class="tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">API REST</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Neon</span>
+                        <span class="tag">Railway</span>
+                        <span class="tag">bcrypt / Auth</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Expériences</h2>
+            <div class="item">
+                <h3>Magasinier vendeur - Point P</h3>
+                <p class="subtle">07/2011 - 01/2025 | Sens</p>
+                <ul>
+                    <li>Relation client, écoute active, conseil et collaboration d'équipe.</li>
+                    <li>Approche orientée besoin utilisateur et résolution de problème.</li>
+                </ul>
+            </div>
+            <div class="item" style="margin-top:14px;">
+                <h3>Conseiller immobilier - Laforêt</h3>
+                <p class="subtle">11/2000 - 04/2011</p>
+                <ul>
+                    <li>Négociation, suivi administratif, organisation et rigueur.</li>
+                    <li>Gestion multi-interlocuteurs et accompagnement de projet.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Formation</h2>
+            <div class="item">
+                <h3>Titre professionnel Développeur Web et Web Mobile</h3>
+                <p class="subtle">École O'clock - 05/2025 - en cours</p>
+                <ul>
+                    <li>HTML5, CSS3, JavaScript, SvelteKit.</li>
+                    <li>Projet tutoré, stage et développement de projets web complets.</li>
+                </ul>
+            </div>
+            <div class="item" style="margin-top:14px;">
+                <h3>BTS Force de Vente</h3>
+                <p class="subtle">IFCV - Levallois-Perret</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Projets représentatifs</h2>
+            <div class="grid">
+                <div class="item">
+                    <h3>BlablaBook</h3>
+                    <p class="note">Frontend SvelteKit/Vite hébergé sur Vercel, connecté à une API backend sur Railway et à une base PostgreSQL Neon.</p>
+                </div>
+                <div class="item">
+                    <h3>Mini RPG REST</h3>
+                    <p class="note">Application web jouable avec gestion des personnages, sessions, API REST, sécurité par bcrypt et base Neon.</p>
+                </div>
+                <div class="item">
+                    <h3>Alternance Quest</h3>
+                    <p class="note">Prototype jouable, sans back pour l’instant, pensé pour évoluer avec compte et sauvegarde des scores.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Langues et infos complémentaires</h2>
+            <div class="grid">
+                <div class="item">
+                    <h3>Langues</h3>
+                    <p>Français : langue maternelle</p>
+                    <p>Anglais : élémentaire (A2)</p>
+                </div>
+                <div class="item">
+                    <h3>Centres d'intérêt</h3>
+                    <p>Gaming, modding GTA RP, airsoft, lecture SF / fantasy / horreur.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

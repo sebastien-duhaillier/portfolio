@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sébastien Duhaillier - Portfolio Développeur Web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Badge de chantier humoristique -->
+    <div class="construction-badge" onclick="showConstructionMessage()" title="Site en construction - Cliquez pour plus d'infos !">
+        <span class="icon">🚧</span>
+        <span class="text">En travaux !</span>
+    </div>
+
+    <!-- Badge en formation -->
+    <div class="formation-badge-top">
+        <div class="formation-badge-core">
+            <span class="icon">📚</span>
+            <span class="text">En formation</span>
+            <span class="icon">📖</span>
+        </div>
+        <div class="formation-badge-details">
+            <p>Je recherche une alternance Concepteur Développeur d'Application à partir d'août 2026 au sein du CESI de Nanterre.</p>
+            <a href="https://www.cesi.fr/" target="_blank" rel="noopener noreferrer">Découvrir le CESI</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Portfolio</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#cv" class="nav-link">CV</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Bonjour, je suis<br><span class="highlight">Sébastien Duhaillier</span></h1>
+            <h2 class="hero-job-title">Développeur Web Full Stack</h2>
+            <p class="hero-description">
+                Passionné par la résolution de problématiques complexes, je transforme mes années d'expérience en vente en expertise développement web
+            </p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-outline">Me contacter</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/photo/Sans titre.jpg" alt="Photo de profil - Sébastien Duhaillier" id="profile-img">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Issu d'un cursus de vente, j'ai toujours aimé répondre aux problématiques 
+                        complexes des besoins clients. Maintenant que mes enfants sont grands, 
+                        je peux lier mes passions (modifications de code de jeux type GTA RP, etc.) 
+                        à ma carrière professionnelle et continuer à apprendre sur des projets concrets.
+                    </p>
+                    <p>
+                        Ma formation chez O'clock est désormais terminée. Je poursuis aujourd'hui mon 
+                        parcours au CESI École d'Ingénieurs de Nanterre, comme le rappelle le badge 
+                        "En formation" en haut de page, et je recherche une alternance Concepteur 
+                        Développeur d'Application à partir d'août 2026. Le métier de développeur Full Stack 
+                        réunit pour moi la satisfaction client, la résolution de problèmes techniques et 
+                        le plaisir de construire des projets utiles.
+                    </p>
+                    <div class="skills">
+                        <h3>Compétences techniques :</h3>
+                        <div class="skills-grid skills-grid-3col">
+                            <div class="skill-group">
+                                <h4>Conception</h4>
+                                <div class="skill-list">
+                                    <span class="skill-badge">Méthode Agile</span>
+                                    <span class="skill-badge">Merise</span>
+                                    <span class="skill-badge">MCD / MLD</span>
+                                    <span class="skill-badge">User stories</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-group">
+                                <h4>Frontend</h4>
+                                <div class="skill-list">
+                                    <span class="skill-badge">HTML5</span>
+                                    <span class="skill-badge">CSS3</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">SvelteKit</span>
+                                    <span class="skill-badge">Vite</span>
+                                    <span class="skill-badge">Canvas API</span>
+                                    <span class="skill-badge">Responsive design</span>
+                                    <span class="skill-badge">Formspree (contact)</span>
+                                    <span class="skill-badge">localStorage</span>
+                                    <span class="skill-badge">IntersectionObserver</span>
+                                    <span class="skill-badge">Font Awesome</span>
+                                    <span class="skill-badge">GitHub Pages</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-group">
+                                <h4>Backend & Bases de données</h4>
+                                <div class="skill-list">
+                                    <span class="skill-badge">Node.js</span>
+                                    <span class="skill-badge">Express</span>
+                                    <span class="skill-badge">API REST</span>
+                                    <span class="skill-badge">bcrypt / Auth</span>
+                                    <span class="skill-badge">PostgreSQL</span>
+                                    <span class="skill-badge">Neon</span>
+                                    <span class="skill-badge">Déploiement (Vercel, Railway)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Mes projets</h2>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <a href="https://sebastien-duhaillier.github.io/crazy-startup/" target="_blank" title="Voir le site Crazy Startup">
+                        <div class="project-image">
+                            <img src="images/photo/crazystartup.jpg" alt="Crazy Startup">
+                        </div>
+                    </a>
+                    <div class="project-content">
+                        <h3>Crazy Startup</h3>
+                        <p>Petit projet personnel développé par curiosité et pour expérimenter de nouvelles idées. Une application web créée de façon spontanée pour explorer différentes fonctionnalités et techniques.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Web App</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://projet-blablabook-front.vercel.app" target="_blank" title="Voir le site BlablaBook Frontend">
+                        <div class="project-image">
+                            <img src="images/photo/blablabook.gif" alt="BlablaBook Frontend">
+                        </div>
+                    </a>
+                    <div class="project-content">
+                        <h3>BlablaBook - Frontend</h3>
+                        <p>Interface utilisateur du projet BlablaBook développée dans le cadre de ma formation O'clock. Application web interactive et fonctionnelle : le frontend est relié au backend (API déployée sur Railway) et à la base de données Neon. Frontend hébergé sur Vercel.</p>
+                        <div class="project-tech">
+                            <span>SvelteKit</span>
+                            <span>Vite</span>
+                            <span>JavaScript</span>
+                            <span>CSS3</span>
+                            <span>HTML5</span>
+                            <span>Vercel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://web-production-0b4a2.up.railway.app" target="_blank" title="Voir l'API BlablaBook Backend">
+                        <div class="project-image">
+                            <img src="images/photo/back blablabook.gif" alt="BlablaBook Backend">
+                        </div>
+                    </a>
+                    <div class="project-content">
+                        <h3>BlablaBook - Backend</h3>
+                        <p>API backend du projet BlablaBook avec gestion des données, authentification et logique métier. Développé pour supporter l'application frontend.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>PostgreSQL</span>
+                            <span>API REST</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://mini-rpg-rest-api.vercel.app/" target="_blank" title="Voir le site Mini RPG REST">
+                        <div class="project-image">
+                            <img src="images/photo/mini rpg.gif" alt="Mini RPG REST">
+                        </div>
+                    </a>
+                    <div class="project-content">
+                        <h3>Mini RPG REST</h3>
+                        <p>Application web pour créer des personnages, gérer leurs items et sorts pour jeux de rôle (RPG, jeu de table, etc). Authentification sécurisée (hash de mot de passe, gestion des sessions), endpoints protégés, et séparation claire entre frontend et backend.</p>
+                        <div class="project-tech project-tech-flex">
+                            <div class="project-col project-col-backend">
+                                <h4>Backend</h4>
+                                <ul>
+                                    <li>Node.js</li>
+                                    <li>Express</li>
+                                    <li>API REST</li>
+                                    <li>bcrypt (hash, sécurité)</li>
+                                    <li>Neon (PostgreSQL)</li>
+                                </ul>
+                            </div>
+                            <div class="project-col project-col-front">
+                                <h4>Frontend</h4>
+                                <ul>
+                                    <li>JavaScript</li>
+                                    <li>HTML5</li>
+                                    <li>CSS3</li>
+                                </ul>
+                            </div>
+                            <div class="project-col project-col-deploy">
+                                <h4>Mise en ligne</h4>
+                                <ul>
+                                    <li>Vercel (frontend)</li>
+                                    <li>Railway (API backend)</li>
+                                    <li>Neon (base de données)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://sebastien-duhaillier.github.io/Alternance-Quest/" target="_blank" title="Voir le site Alternance Quest">
+                        <div class="project-image">
+                            <img src="images/photo/Alternance quest.gif" alt="Alternance Quest">
+                        </div>
+                    </a>
+                    <div class="project-content">
+                        <h3>Alternance Quest</h3>
+                        <p>Jeu narratif et interactif autour de la recherche d'alternance. La version actuelle est jouable sans back, avec un niveau 1 centré sur l'embauche et un niveau 2 consacré à la première mission et à la période d'essai. D'autres niveaux sont prévus, puis une création de compte avec mémorisation des scores.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Prototype jouable</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/photo/github.gif" alt="Tous mes projets GitHub">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/sebastien-duhaillier" target="_blank" class="project-link" title="Mon profil GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Tous mes projets GitHub</h3>
+                        <p>Découvrez l'ensemble de mes réalisations et projets de développement web sur mon profil GitHub. Formation, exercices, projets personnels et plus encore !</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>SvelteKit</span>
+                            <span>Node.js</span>
+                            <span>Divers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2 class="section-title">Mon CV</h2>
+            <div class="cv-content">
+                <div class="cv-preview">
+                    <div class="cv-card">
+                        <div class="cv-header">
+                            <h3>Curriculum Vitae</h3>
+                            <p>Développeur Web Full Stack en formation</p>
+                        </div>
+                        <div class="cv-body">
+                            <div class="cv-section-item">
+                                <h4><i class="fas fa-graduation-cap"></i> Formation</h4>
+                                <p><strong>Titre professionnel Développeur Web et Web Mobile (en cours)</strong></p>
+                                <p>École O'clock, Paris - Formation téléprésentiel (Mai 2025 - en cours)</p>
+                                <p><strong>BTS Force de Vente</strong> - IFCV, Levallois-Perret (1998-2000)</p>
+                            </div>
+                            <div class="cv-section-item">
+                                <h4><i class="fas fa-briefcase"></i> Expérience</h4>
+                                <p><strong>Magasinier Vendeur</strong> - Point P, Sens (Juillet 2011 - Janvier 2025)</p>
+                                <p>Collaboration équipe, écoute client, recommandation produits</p>
+                                <p><strong>Conseiller Immobilier</strong> - Laforêt, multi-sites (Novembre 2000 - Avril 2011)</p>
+                                <p>Gestion négociations, transactions, administration dossiers</p>
+                            </div>
+                        </div>
+                        <div class="cv-download">
+                            <p class="cv-download-note">Choisis la version selon le destinataire : PDF, HTML ou ATS / IA.</p>
+                            <div class="cv-download-buttons">
+                                <a href="cv/cv pdf/DUHAILLIER Sébastien CV alternance CDA.docx.pdf" download="DUHAILLIER_Sebastien_CV_Alternance_CDA.pdf" class="btn btn-outline">
+                                    <i class="fas fa-download"></i> CV PDF alternance CDA
+                                </a>
+                                <a href="cv/cv-template.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-file-code"></i> CV HTML humain
+                                </a>
+                                <a href="cv/cv-ai.html" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-file-alt"></i> CV IA / ATS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Me contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:duhaillier.sebastien@free.fr" class="contact-link">duhaillier.sebastien@free.fr</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:+33778865148" class="contact-link">07 78 86 51 48</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Localisation</h4>
+                            <p>Cheroy, France (89690)</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/sébastien-duhaillier-37a3bb2a9" target="_blank" class="social-link" title="Profil LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/sebastien-duhaillier" target="_blank" class="social-link" title="Profil GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:duhaillier.sebastien@free.fr" class="social-link" title="Envoyer un email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/mdalkwle" method="POST">
+                    <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio">
+                    <input type="hidden" name="_next" value="https://sebastien-duhaillier.github.io/portfolio/">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sébastien Duhaillier - Portfolio. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
