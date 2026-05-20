@@ -160,69 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Gestion du formulaire de contact vers Formspree
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const statusBox = contactForm.querySelector('.form-status');
-    const formEndpoint = contactForm.getAttribute('action');
-
-    contactForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        if (!submitBtn) {
-            return;
-        }
-
-        const originalLabel = submitBtn.textContent;
-        const formData = new FormData(contactForm);
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Envoi en cours...';
-
-        if (statusBox) {
-            statusBox.textContent = 'Envoi du message en cours...';
-            statusBox.className = 'form-status info';
-        }
-
-        try {
-            const response = await fetch(formEndpoint, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json'
-                },
-                body: formData
-            });
-
-            if (response.ok) {
-                contactForm.reset();
-                if (statusBox) {
-                    statusBox.textContent = 'Message envoyé. Je vous répondrai dès que possible.';
-                    statusBox.className = 'form-status success';
-                }
-            } else {
-                const data = await response.json().catch(() => null);
-                const errorMessage = data && data.errors && data.errors.length
-                    ? data.errors.map(error => error.message).join(' ')
-                    : 'L\'envoi a échoué. Vérifiez votre adresse email puis réessayez.';
-
-                if (statusBox) {
-                    statusBox.textContent = errorMessage;
-                    statusBox.className = 'form-status error';
-                }
-            }
-        } catch (error) {
-            if (statusBox) {
-                statusBox.textContent = 'Impossible de contacter Formspree pour le moment. Réessayez plus tard.';
-                statusBox.className = 'form-status error';
-            }
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalLabel;
-        }
-    });
-}
-
 // Met à jour le lien actif dans la navigation
 function updateActiveNavLink() {
     window.addEventListener('scroll', () => {

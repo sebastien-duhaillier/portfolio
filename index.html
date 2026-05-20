@@ -360,23 +360,30 @@
                         <a href="mailto:duhaillier.sebastien@free.fr" class="social-link" title="Envoyer un email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/mdalkwle" method="POST">
-                    <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio">
-                    <input type="hidden" name="_captcha" value="false">
+                <div data-fs-success></div>
+                <div data-fs-error></div>
+                <form id="contact-form-fs" class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" data-fs-field placeholder="Votre email" required>
+                        <span data-fs-error="email"></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Votre email" required>
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" data-fs-field placeholder="Votre nom" required>
+                        <span data-fs-error="name"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" data-fs-field placeholder="Sujet" required>
+                        <span data-fs-error="subject"></span>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" data-fs-field rows="5" placeholder="Votre message" required></textarea>
+                        <span data-fs-error="message"></span>
                     </div>
-                    <div class="form-status" aria-live="polite"></div>
-                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    <button type="submit" class="btn btn-primary" data-fs-submit-btn>Envoyer le message</button>
                 </form>
             </div>
         </div>
@@ -389,6 +396,11 @@
         </div>
     </footer>
 
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contact-form-fs', formId: 'mdalkwle' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script src="js/main.js"></script>
 </body>
 </html>
