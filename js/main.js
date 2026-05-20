@@ -63,31 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tous les éléments restent visibles normalement
 });
 
-// Gestion du formulaire de contact
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Animation de chargement
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Envoi en cours...';
-        submitBtn.style.opacity = '0.7';
-        
-        // Pour Formspree, on laisse le formulaire se soumettre normalement
-        // Formspree se chargera de tout et redirigera vers une page de confirmation
-        
-        // Optionnel: afficher un message local avant la redirection Formspree
-        setTimeout(() => {
-            showMessage('Redirection vers la page de confirmation...', 'info');
-        }, 100);
-        
-        // Le formulaire se soumet normalement vers Formspree
-        // Pas de e.preventDefault() pour laisser Formspree gérer
-    });
-}
-
 // Fonction pour afficher des messages
 function showMessage(message, type = 'info') {
     // Créer l'élément de message
