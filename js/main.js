@@ -59,6 +59,7 @@ window.addEventListener('scroll', () => {
 
 // Observer tous les éléments avec la classe 'animate' - DÉSACTIVÉ
 document.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
     // Les animations au scroll sont désactivées pour éviter le masquage du texte
     // Tous les éléments restent visibles normalement
 });
