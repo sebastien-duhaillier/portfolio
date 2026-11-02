@@ -5,13 +5,26 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', String(navMenu.classList.contains('active')));
+    hamburger.setAttribute('aria-label', navMenu.classList.contains('active') ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
 });
 
 // Fermer le menu mobile quand on clique sur un lien
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
 }));
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.focus();
+    }
+});
 
 // Smooth scrolling pour les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
