@@ -1102,3 +1102,63 @@ div[data-fs-error] {
 .project-actions a:hover, .project-actions a:focus-visible { text-decoration: underline; color: var(--navy); }
 .project-card-featured { border-color: #a9bfff; }
 @media (min-width: 769px) and (max-width: 1100px) { .nav-menu { gap: .85rem; } .nav-link { font-size: .85rem; } }
+
+
+/* Refonte visuelle inspirée des principes de sobriété et d'accessibilité du design public.
+   Portfolio personnel : aucun composant ni bloc-marque officiel DSFR. */
+:root {
+  --blue: #000091;
+  --blue-light: #3558a2;
+  --purple: #3558a2;
+  --navy: #000071;
+  --text: #161616;
+  --muted: #4b5563;
+  --white: #ffffff;
+  --page-bg: #ffffff;
+  --panel: #f6f6f6;
+  --panel-light: #ffffff;
+  --border: #dddddd;
+  --shadow: 0 4px 16px rgba(0, 0, 80, .07);
+  --shadow-sm: 0 2px 9px rgba(0, 0, 80, .05);
+  --shadow-xs: 0 1px 6px rgba(0, 0, 80, .05);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 12px;
+  --font-main: Arial, Helvetica, sans-serif;
+}
+html,body { background: var(--page-bg); color: var(--text); }
+.navbar { background: #fff; border-bottom: 1px solid #e5e7eb; box-shadow: none; }
+.nav-container { max-width: 1380px; height: 88px; }
+.nav-logo a, .nav-logo-text span { color: var(--navy); }
+.nav-link { color: var(--navy); }
+.nav-link:hover, .nav-link:focus-visible { color: var(--blue); }
+.hero { background: linear-gradient(115deg, #f1f3ff 0%, #fafaff 72%, #e9edff 100%); }
+.hero-title, .hero-job-title, .section-title { color: var(--navy); }
+.hero-title .highlight { color: var(--blue); }
+.hero-description { color: #252c43; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.5rem; }
+.hero-chips span { background: #fff; border: 1px solid #d7dcf3; color: var(--navy); border-radius: 999px; padding: .55rem .85rem; font-size: .84rem; font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,80,.04); }
+.btn, .project-actions a { border-radius: 5px; }
+.btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--navy); border-color: var(--navy); }
+.btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
+.btn-outline:hover { background: #ececfe; color: var(--navy); }
+.portfolio, .about, .cv, .contact { background: #fff; }
+.portfolio-grid { gap: 1.35rem; align-items: stretch; }
+.project-card { background: #fff; border: 1px solid #dce0eb; border-radius: 10px; box-shadow: var(--shadow-sm); overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease; }
+.project-card:hover { border-color: #a8b6dc; box-shadow: var(--shadow); }
+.project-card .project-image { height: 210px; }
+.project-card .project-content { padding: 1.2rem; }
+.project-card h3 { color: var(--navy); }
+.project-tech span, .skill-badge { background: #ececfe; color: var(--navy); border: 1px solid #e1e4f4; border-radius: 999px; }
+.project-type { background: var(--blue); color: #fff; border-color: var(--blue); }
+.project-actions { border-top: 1px solid #e8e8ee; }
+.project-actions a { border: 1px solid var(--blue); padding: .6rem .85rem; color: var(--blue); }
+.project-actions a:hover, .project-actions a:focus-visible { background: #ececfe; color: var(--navy); }
+.project-card:has(.project-details[open]) { overflow: visible; position: relative; z-index: 10; }
+.project-details-panel { border-radius: 8px; box-shadow: 0 12px 26px rgba(0,0,80,.17); }
+.footer { background: var(--navy); }
+:where(a,button,input,textarea,summary):focus-visible { outline: 3px solid #e1000f; outline-offset: 3px; }
+.hamburger { background: transparent; border: 0; cursor: pointer; padding: .65rem; }
+@media(max-width:768px) { .nav-container { height: 72px; } .project-card .project-image { height: 190px; } .hero-chips { gap: .45rem; } .hero-chips span { font-size: .76rem; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .01ms!important; transition-duration: .01ms!important; } }
