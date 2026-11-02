@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sébastien Duhaillier - Portfolio Développeur Web</title>
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <title>Sébastien Duhaillier | Développeur web &amp; webmestre</title>
+    <meta name="description" content="Portfolio de Sébastien Duhaillier : applications web full stack, projets personnels, outils métier et expérience de webmestre.">
+    <meta property="og:title" content="Sébastien Duhaillier | Portfolio développeur web">
+    <meta property="og:description" content="Projets full stack, outils métier et parcours de développeur web et webmestre.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/style.css?v=6">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -24,7 +28,8 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Accueil</a></li>
                 <li><a href="#about" class="nav-link">À propos</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#portfolio" class="nav-link">Projets</a></li>
+                <li><a href="#realisations-professionnelles" class="nav-link">Réalisations pro</a></li>
                 <li><a href="#cv" class="nav-link">CV</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 
@@ -144,7 +149,7 @@
     </div>
 </a>
                     <div class="project-content">
-                        <h3>La Bonne Relance</h3>
+                        <h3>La Bonne Relance <span class="project-type">Full stack</span></h3>
                         <p>Mini CRM full stack pour enregistrer des prospects, suivre leur origine et leur statut, puis automatiser des séquences d’e-mails. Le frontend Next.js utilise Supabase pour l’authentification et les données, tandis qu’un worker Python/FastAPI planifie et envoie les relances avec Brevo.</p>
                         <div class="project-tech">
                             <span>Next.js</span>
@@ -156,6 +161,7 @@
                             <span>Railway</span>
                             <span>Vercel</span>
                         </div>
+                        <div class="project-actions"><a href="https://la-bonne-relance.vercel.app" target="_blank" rel="noopener noreferrer">Voir la démo <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></div>
                     </div>
                 </div>
 
@@ -177,41 +183,31 @@
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <a href="https://projet-blablabook-front.vercel.app" target="_blank" title="Voir le site BlablaBook Frontend">
+                <div class="project-card project-card-featured">
+                    <a href="https://projet-blablabook-front.vercel.app" target="_blank" rel="noopener noreferrer" title="Tester BlablaBook en ligne">
                         <div class="project-image">
-                            <img src="images/photo/blablabook.gif" alt="BlablaBook Frontend">
+                            <img src="images/photo/blablabook.gif" alt="Aperçu de l'application BlablaBook">
                         </div>
                     </a>
                     <div class="project-content">
-                        <h3>BlablaBook - Frontend</h3>
-                        <p>Interface utilisateur du projet BlablaBook développée dans le cadre de ma formation O'clock. Application web interactive et fonctionnelle : le frontend est relié au backend (API déployée sur Railway) et à la base de données Neon. Frontend hébergé sur Vercel.</p>
+                        <h3>BlablaBook <span class="project-type">Full stack</span></h3>
+                        <p>Application web full stack réalisée pendant ma formation O'clock. Interface SvelteKit connectée à une API Node.js/Express, avec authentification, logique métier et base de données PostgreSQL hébergée sur Neon. Frontend déployé sur Vercel et API sur Railway.</p>
                         <div class="project-tech">
-                            <span>SvelteKit</span>
-                            <span>Vite</span>
-                            <span>JavaScript</span>
-                            <span>CSS3</span>
-                            <span>HTML5</span>
-                            <span>Vercel</span>
+                            <span>SvelteKit</span><span>JavaScript</span><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>API REST</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <a href="https://web-production-0b4a2.up.railway.app" target="_blank" title="Voir l'API BlablaBook Backend">
-                        <div class="project-image">
-                            <img src="images/photo/back blablabook.gif" alt="BlablaBook Backend">
-                        </div>
-                    </a>
-                    <div class="project-content">
-                        <h3>BlablaBook - Backend</h3>
-                        <p>API backend du projet BlablaBook avec gestion des données, authentification et logique métier. Développé pour supporter l'application frontend.</p>
-                        <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>Express</span>
-                            <span>PostgreSQL</span>
-                            <span>API REST</span>
-                        </div>
+                        <details class="project-details">
+                            <summary>Voir la stack technique</summary>
+                            <div class="project-details-panel">
+                                <div class="project-details-head">BlablaBook <span>Frontend et backend</span></div>
+                                <div class="project-tech-flex">
+                                    <div class="project-col"><h4>Frontend</h4><ul><li>SvelteKit</li><li>Vite</li><li>JavaScript</li><li>HTML5 / CSS3</li></ul></div>
+                                    <div class="project-col"><h4>Backend</h4><ul><li>Node.js</li><li>Express</li><li>API REST</li><li>PostgreSQL (Neon)</li></ul></div>
+                                    <div class="project-col"><h4>Déploiement</h4><ul><li>Vercel (frontend)</li><li>Railway (API)</li><li>Neon (données)</li></ul></div>
+                                </div>
+                            </div>
+                        </details>
+                        <div class="project-actions"><a href="https://projet-blablabook-front.vercel.app" target="_blank" rel="noopener noreferrer">Voir le site en ligne <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></div>
+                        <div class="project-actions"><a href="https://sebastien-duhaillier.github.io/crazy-startup/" target="_blank" rel="noopener noreferrer">Voir la démo <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></div>
                     </div>
                 </div>
 
@@ -222,7 +218,7 @@
                         </div>
                     </a>
                     <div class="project-content">
-                        <h3>Mini RPG REST</h3>
+                        <h3>Mini RPG REST <span class="project-type">Full stack</span></h3>
                         <p>Application web pour créer des personnages, gérer leurs items et sorts pour jeux de rôle (RPG, jeu de table, etc). Authentification sécurisée (hash de mot de passe, gestion des sessions), endpoints protégés, et séparation claire entre frontend et backend.</p>
                         <div class="project-tech">
                             <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>JavaScript</span><span>API REST</span>
@@ -261,6 +257,7 @@
                         </div>
                             </div>
                         </details>
+                        <div class="project-actions"><a href="https://mini-rpg-rest-api.vercel.app/" target="_blank" rel="noopener noreferrer">Voir la démo <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></div>
                     </div>
                 </div>
 
@@ -279,6 +276,7 @@
                             <span>JavaScript</span>
                             <span>Prototype jouable</span>
                         </div>
+                        <div class="project-actions"><a href="https://sebastien-duhaillier.github.io/Alternance-Quest/" target="_blank" rel="noopener noreferrer">Voir la démo <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></div>
                     </div>
                 </div>
 
