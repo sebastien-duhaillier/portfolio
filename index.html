@@ -8,7 +8,7 @@
     <meta property="og:title" content="Sébastien Duhaillier | Portfolio développeur web">
     <meta property="og:description" content="Projets full stack, outils métier et parcours de développeur web et webmestre.">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -25,7 +25,7 @@
                     </div>
                 </a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="portfolio-navigation">
                 <li><a href="#home" class="nav-link">Accueil</a></li>
                 <li><a href="#about" class="nav-link">À propos</a></li>
                 <li><a href="#portfolio" class="nav-link">Projets</a></li>
@@ -34,11 +34,11 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="Ouvrir le menu de navigation" aria-controls="portfolio-navigation" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -53,6 +53,7 @@
             <div class="hero-buttons">
                 <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
                 <a href="#contact" class="btn btn-outline">Me contacter</a>
+                <div class="hero-chips" aria-label="Domaines de compétences"><span>Full Stack</span><span>JavaScript / TypeScript</span><span>Node.js</span><span>Bases de données</span></div>
             </div>
         </div>
         <div class="hero-image">
@@ -145,7 +146,7 @@
         <img
             src="images/photo/la-bonne-relance.gif"
             alt="Tableau de bord de La Bonne Relance"
-        >
+         loading="lazy">
     </div>
 </a>
                     <div class="project-content">
@@ -168,7 +169,7 @@
                 <div class="project-card">
                     <a href="https://sebastien-duhaillier.github.io/crazy-startup/" target="_blank" title="Voir le site Crazy Startup">
                         <div class="project-image">
-                            <img src="images/photo/Crazy Startup.gif" alt="Crazy Startup">
+                            <img src="images/photo/Crazy Startup.gif" alt="Crazy Startup" loading="lazy">
                         </div>
                     </a>
                     <div class="project-content">
@@ -187,7 +188,7 @@
                 <div class="project-card project-card-featured">
                     <a href="https://projet-blablabook-front.vercel.app" target="_blank" rel="noopener noreferrer" title="Tester BlablaBook en ligne">
                         <div class="project-image">
-                            <img src="images/photo/blablabook.gif" alt="Aperçu de l'application BlablaBook">
+                            <img src="images/photo/blablabook.gif" alt="Aperçu de l'application BlablaBook" loading="lazy">
                         </div>
                     </a>
                     <div class="project-content">
@@ -215,7 +216,7 @@
                 <div class="project-card">
                     <a href="https://mini-rpg-rest-api.vercel.app/" target="_blank" title="Voir le site Mini RPG REST">
                         <div class="project-image">
-                            <img src="images/photo/mini rpg.gif" alt="Mini RPG REST">
+                            <img src="images/photo/mini rpg.gif" alt="Mini RPG REST" loading="lazy">
                         </div>
                     </a>
                     <div class="project-content">
@@ -265,7 +266,7 @@
                 <div class="project-card">
                     <a href="https://sebastien-duhaillier.github.io/Alternance-Quest/" target="_blank" title="Voir le site Alternance Quest">
                         <div class="project-image">
-                            <img src="images/photo/Alternance quest.gif" alt="Alternance Quest">
+                            <img src="images/photo/Alternance quest.gif" alt="Alternance Quest" loading="lazy">
                         </div>
                     </a>
                     <div class="project-content">
@@ -283,7 +284,7 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/photo/github.gif" alt="Tous mes projets GitHub">
+                        <img src="images/photo/github.gif" alt="Tous mes projets GitHub" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/sebastien-duhaillier" target="_blank" class="project-link" title="Mon profil GitHub"><i class="fab fa-github"></i></a>
