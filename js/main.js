@@ -32,7 +32,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navbarHeight = 70; // Hauteur de la navbar
+            const navbarHeight = document.querySelector(".navbar")?.offsetHeight ?? 88;
             const targetPosition = target.offsetTop - navbarHeight;
             
             window.scrollTo({
@@ -48,10 +48,10 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 80, 0.06)';
     } else {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.boxShadow = 'none';
     }
 });
 
@@ -71,11 +71,7 @@ window.addEventListener('scroll', () => {
 // }, observerOptions);
 
 // Observer tous les éléments avec la classe 'animate' - DÉSACTIVÉ
-document.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo(0, 0);
-    // Les animations au scroll sont désactivées pour éviter le masquage du texte
-    // Tous les éléments restent visibles normalement
-});
+
 
 // Fonction pour afficher des messages
 function showMessage(message, type = 'info') {
