@@ -1236,3 +1236,17 @@ html,body { background: var(--page-bg); color: var(--text); }
 .project-details-panel .project-col ul li {
   background: #ffffff;
 }
+
+
+/* Finition : hiérarchie des projets et panneaux techniques dans le flux. */
+.portfolio-intro { text-align: center; color: var(--muted); margin: -1.4rem auto 2rem; max-width: 680px; line-height: 1.6; }
+.portfolio-subtitle { color: var(--navy); font-size: 1.35rem; font-weight: 750; margin: 3.5rem 0 1.5rem; }
+.portfolio-grid-primary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.portfolio-grid-secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.portfolio-grid-secondary .project-card { box-shadow: none; }
+.project-card:has(.project-details[open]) { overflow: hidden; z-index: auto; }
+.project-details-panel { position: static; inset: auto; max-height: none; overflow: visible; margin-top: .65rem; padding: 1rem; border-radius: 6px; box-shadow: none; }
+.project-details-panel .project-tech-flex { grid-template-columns: 1fr; }
+.project-details summary { display: list-item; padding: .75rem 0; }
+@media(max-width:1000px) { .portfolio-grid-primary,.portfolio-grid-secondary { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:650px) { .portfolio-grid-primary,.portfolio-grid-secondary { grid-template-columns: 1fr; } .portfolio-subtitle { margin-top: 2.5rem; } }
