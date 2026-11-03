@@ -1227,3 +1227,12 @@ html,body { background: var(--page-bg); color: var(--text); }
   transition: none;
 }
 @media(max-width:480px) { .hero-chips span { padding: .45rem .65rem; font-size: .8rem; } }
+
+
+/* Étiquettes de compétences et de stack : fond blanc, contour bleu. */
+.project-tech span,
+.skill-badge,
+.hero-chips span,
+.project-details-panel .project-col ul li {
+  background: #ffffff;
+}
