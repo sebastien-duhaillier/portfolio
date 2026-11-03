@@ -1188,3 +1188,42 @@ html,body { background: var(--page-bg); color: var(--text); }
 @media (max-width: 480px) {
   .project-tech span, .skill-badge { padding: .45rem .65rem; font-size: .8rem; }
 }
+
+
+/* Harmonisation accueil et panneaux de stack technique */
+.hero { background: #ffffff; }
+.hero-chips { margin-top: 1.4rem; gap: .55rem; }
+.hero-chips span {
+  display: inline-flex;
+  align-items: center;
+  background: #ececfe;
+  border: 1px solid #000091;
+  color: #000091;
+  border-radius: 4px;
+  padding: .5rem .75rem;
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: none;
+  cursor: default;
+  transition: none;
+}
+.project-details summary { color: #000091; }
+.project-details-panel .project-col { background: #fff; border: 1px solid #dddddd; border-radius: 6px; box-shadow: none; }
+.project-details-panel .project-col ul { display: flex; flex-wrap: wrap; gap: .5rem; }
+.project-details-panel .project-col ul li {
+  display: inline-flex;
+  align-items: center;
+  padding: .5rem .7rem;
+  border: 1px solid #000091;
+  border-radius: 4px;
+  background: #ececfe;
+  color: #000091;
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: none;
+  cursor: default;
+  transition: none;
+}
+@media(max-width:480px) { .hero-chips span { padding: .45rem .65rem; font-size: .8rem; } }
