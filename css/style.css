@@ -1162,3 +1162,29 @@ html,body { background: var(--page-bg); color: var(--text); }
 .hamburger { background: transparent; border: 0; cursor: pointer; padding: .65rem; }
 @media(max-width:768px) { .nav-container { height: 72px; } .project-card .project-image { height: 190px; } .hero-chips { gap: .45rem; } .hero-chips span { font-size: .76rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .01ms!important; transition-duration: .01ms!important; } }
+
+
+/* Étiquettes techniques : style rectangulaire cohérent avec les boutons,
+   mais sans interaction ni effet de survol. */
+.project-tech span,
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .8rem;
+  background: #ececfe;
+  color: #000091;
+  border: 1px solid #000091;
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.35;
+  cursor: default;
+  transition: none;
+}
+.skill-list { display: flex; flex-wrap: wrap; gap: .65rem; }
+.project-tech { gap: .55rem; }
+@media (max-width: 480px) {
+  .project-tech span, .skill-badge { padding: .45rem .65rem; font-size: .8rem; }
+}
