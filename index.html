@@ -8,7 +8,7 @@
     <meta property="og:title" content="Sébastien Duhaillier | Portfolio développeur web">
     <meta property="og:description" content="Projets full stack, outils métier et parcours de développeur web et webmestre.">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="css/style.css?v=12">
+    <link rel="stylesheet" href="css/style.css?v=13">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -324,6 +324,35 @@
                             <h3>Outils métier et documentation</h3>
                             <p>Projets réalisés dans le cadre de mes missions de webmestre</p>
                         </div>
+                        <aside class="professional-constraints" aria-labelledby="professional-constraints-title">
+                            <div class="professional-constraints-heading">
+                                <span class="professional-constraints-icon" aria-hidden="true">
+                                    <i class="fas fa-shield-alt"></i>
+                                </span>
+                                <div>
+                                    <p class="professional-constraints-kicker">Contrainte technique structurante</p>
+                                    <h4 id="professional-constraints-title">Des outils autonomes, conçus pour un environnement sécurisé</h4>
+                                </div>
+                            </div>
+                            <p>
+                                Les postes administratifs concernés ne permettaient ni installation de logiciel,
+                                ni droits administrateur, ni déploiement de serveur ou de base de données distante.
+                                Les outils ont donc été conçus pour fonctionner localement, sans connexion réseau
+                                nécessaire et sans modification du poste.
+                            </p>
+                            <p>
+                                Cette architecture volontaire permettait de rester dans le périmètre technique
+                                autorisé, de protéger les données sensibles et de transmettre chaque outil sous
+                                la forme d’un dossier autonome, sans déploiement d’infrastructure supplémentaire.
+                            </p>
+                            <div class="professional-constraints-tags" aria-label="Contraintes prises en compte">
+                                <span><i class="fas fa-wifi" aria-hidden="true"></i> Fonctionnement hors ligne</span>
+                                <span><i class="fas fa-download" aria-hidden="true"></i> Aucune installation</span>
+                                <span><i class="fas fa-database" aria-hidden="true"></i> Données locales</span>
+                                <span><i class="fas fa-folder-open" aria-hidden="true"></i> Application portable</span>
+                                <span><i class="fas fa-server" aria-hidden="true"></i> Sans service externe</span>
+                            </div>
+                        </aside>
                         <div class="cv-body">
                             <div class="cv-section-item">
                                 <h4>Gestion des ressources à conserver</h4>
@@ -364,6 +393,8 @@
                                     <p class="professional-demo-note">
                                         Le site a été entièrement adapté et anonymisé. Il ne contient aucune donnée,
                                         identité visuelle, ressource ou application interne de la préfecture.
+                                        Les versions professionnelles étaient autonomes, utilisables hors ligne et
+                                        sans dépendance à une infrastructure externe.
                                     </p>
 
                                     <div class="project-tech" aria-label="Technologies utilisées">
