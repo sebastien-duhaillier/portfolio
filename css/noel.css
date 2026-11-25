@@ -1,11 +1,44 @@
 .hero-noel {
   isolation: isolate;
-  background: radial-gradient(ellipse at 85% 20%, #e5edf9, transparent 60%), #f8fbff;
+  background: radial-gradient(ellipse at 85% 20%, #dce9f4, transparent 65%), #f2f6fa;
+}
+
+.choix-theme {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: 6.25rem;
+  inset-inline-start: clamp(1rem, 3vw, 2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .2rem .35rem .2rem .6rem;
+  border: 1px solid #bac6d5;
+  border-radius: .5rem;
+  background: #fff;
+  color: var(--navy);
+  font-size: .78rem;
+}
+
+.choix-theme select {
+  min-height: 1.9rem;
+  padding-inline: .2rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.choix-theme select:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
 }
 
 .noel-neige {
   position: absolute;
   inset: 0;
+  z-index: 2;
   overflow: hidden;
   pointer-events: none;
 }
@@ -17,14 +50,14 @@
   width: var(--taille);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 1px #aec0dc70, 0 0 5px #91a9cf70;
+  background: #fbfdff;
+  box-shadow: 0 0 0 1px #54759fa8, 0 1px 4px #54759f55;
   animation: noel-chute var(--duree) linear var(--delai) infinite;
 }
 
 @keyframes noel-chute {
   from { top: -.75rem; transform: translateX(0); opacity: 0; }
-  10%, 88% { opacity: .85; }
+  8%, 92% { opacity: .94; }
   to { top: 100%; transform: translateX(var(--derive)); opacity: 0; }
 }
 
@@ -54,34 +87,99 @@
   outline-offset: 3px;
 }
 
-.hero-noel .hero-image { isolation: isolate; }
-
-.noel-message {
+.noel-cadeaux {
   position: absolute;
-  z-index: 1;
-  inset-block-start: .75rem;
-  inset-inline-end: max(.25rem, calc((100% - 420px) / 2 + .75rem));
-  margin: 0;
-  padding: .5rem .9rem;
-  border: 1px solid #e6cb8a;
-  border-radius: 999px;
-  background: #fffbef;
-  color: #233854;
-  box-shadow: 0 4px 14px #17345430;
-  font-weight: 700;
+  inset-inline-end: max(0px, calc((100% - 420px) / 2 - 1.25rem));
+  inset-block-end: -.25rem;
+  display: flex;
+  align-items: end;
+  gap: .35rem;
   pointer-events: none;
-  animation: noel-passage 4.8s ease both;
 }
 
-.noel-son[hidden], .noel-message[hidden] { display: none; }
+.noel-cadeaux span {
+  --papier: #ab2636;
+  --ruban: #f5d183;
+  position: relative;
+  width: 2.35rem;
+  height: 1.95rem;
+  border-radius: .17rem;
+  background:
+    linear-gradient(to right, transparent 41%, var(--ruban) 41% 59%, transparent 59%),
+    linear-gradient(to bottom, transparent 36%, var(--ruban) 36% 51%, transparent 51%),
+    var(--papier);
+  box-shadow: 0 2px 7px #19283b48, inset 0 .2rem #ffffff30;
+  transform: rotate(-7deg);
+}
+
+.noel-cadeaux span:nth-child(2) {
+  --papier: #185f47;
+  width: 1.85rem;
+  height: 2.35rem;
+  transform: rotate(5deg);
+}
+
+.noel-cadeaux span:nth-child(3) {
+  --papier: #d5a339;
+  --ruban: #9b2636;
+  width: 1.55rem;
+  height: 1.35rem;
+  transform: rotate(-3deg);
+}
+
+.noel-cadeaux span::before, .noel-cadeaux span::after {
+  position: absolute;
+  bottom: 94%;
+  width: .55rem;
+  height: .4rem;
+  border: 2px solid var(--ruban);
+  content: '';
+}
+
+.noel-cadeaux span::before {
+  right: 48%;
+  border-radius: 70% 70% 0 70%;
+  transform: rotate(18deg);
+}
+
+.noel-cadeaux span::after {
+  left: 48%;
+  border-radius: 70% 70% 70% 0;
+  transform: rotate(-18deg);
+}
+
+.noel-message {
+  position: fixed;
+  z-index: 999;
+  inset-block-start: clamp(8.25rem, 24vh, 13.5rem);
+  left: 100%;
+  margin: 0;
+  padding: .6rem clamp(.9rem, 3vw, 1.55rem);
+  border: 2px solid #bd8b34;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #184734, #21553d);
+  color: #ffe4a0;
+  box-shadow: inset 0 0 0 2px #81242d, 0 4px 16px #17345440;
+  font: 700 clamp(1.15rem, 3vw, 2rem)/1.1 Georgia, serif;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: noel-passage 7.6s linear both;
+}
+
+.choix-theme[hidden], .noel-son[hidden], .noel-message[hidden],
+.hero:not(.hero-noel) .noel-cadeaux, .hero:not(.hero-noel) .noel-neige { display: none; }
 
 @keyframes noel-passage {
-  0% { transform: translateX(clamp(2rem, 10vw, 7rem)); opacity: 0; }
-  26%, 70% { transform: translateX(0); opacity: 1; }
-  100% { transform: translateX(-3rem); opacity: 0; }
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100vw - 100%)); }
+}
+
+@media (max-width: 768px) {
+  .choix-theme { inset-block-start: 4.9rem; }
+  .noel-cadeaux { inset-inline-end: max(0px, calc((100% - min(300px, 70vw)) / 2 - .5rem)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .noel-neige { display: none; }
-  .noel-message { animation: none; }
+  .noel-message { left: 50%; transform: translateX(-50%); animation: none; }
 }

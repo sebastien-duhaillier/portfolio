@@ -3,24 +3,33 @@
   if (!hero) return;
 
   const snow = hero.querySelector('.noel-neige');
+  const themePicker = hero.querySelector('.choix-theme');
+  const themeSelect = themePicker.querySelector('select');
+  const portrait = hero.querySelector('#profile-img');
+  const portraitFrame = hero.querySelector('.hero-image');
   const soundButton = hero.querySelector('.noel-son');
-  const greeting = hero.querySelector('.noel-message');
+  const greeting = document.querySelector('.noel-message');
   const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  const themes = {
+    noel: 'assets/photo-noel-decor.webp',
+    normal: 'assets/photo.jpg',
+  };
   const interval = 30_000;
-  const duration = 4_800;
+  const duration = 7_600;
+  let theme = 'noel';
   let audio;
   let soundEnabled = false;
   let passage;
   let greetingTimer;
   let nextPassageTimer;
 
-  for (let i = 0; i < 28; i++) {
+  for (let i = 0; i < 46; i++) {
     const flake = document.createElement('span');
     flake.className = 'noel-flocon';
     flake.style.setProperty('--position', `${Math.random() * 100}%`);
-    flake.style.setProperty('--taille', `${2 + Math.random() * 4}px`);
-    flake.style.setProperty('--duree', `${9 + Math.random() * 10}s`);
-    flake.style.setProperty('--delai', `${-Math.random() * 19}s`);
+    flake.style.setProperty('--taille', `${3 + Math.random() * 5}px`);
+    flake.style.setProperty('--duree', `${7 + Math.random() * 8}s`);
+    flake.style.setProperty('--delai', `${-Math.random() * 15}s`);
     flake.style.setProperty('--derive', `${Math.random() * 70 - 35}px`);
     snow.append(flake);
   }
@@ -49,7 +58,7 @@
       master.connect(audio.destination);
     }
     master.gain.setValueAtTime(0.002, start);
-    master.gain.exponentialRampToValueAtTime(0.125, start + 2);
+    master.gain.exponentialRampToValueAtTime(0.125, start + length * 0.45);
     master.gain.exponentialRampToValueAtTime(0.001, start + length);
     passage = master;
 
@@ -59,7 +68,7 @@
     const partials = [1, 2.41, 3.56];
     rhythm.forEach((offset, index) => {
       partials.forEach((ratio, partial) => {
-        const strike = start + offset;
+        const strike = start + offset * (length - 0.5) / rhythm.at(-1);
         const tail = 0.43 - partial * 0.08;
         const oscillator = audio.createOscillator();
         const volume = audio.createGain();
@@ -85,10 +94,11 @@
 
   function showPassage() {
     window.clearTimeout(nextPassageTimer);
+    if (theme !== 'noel') return;
     nextPassageTimer = window.setTimeout(showPassage, interval);
 
-    const portrait = hero.querySelector('.hero-image').getBoundingClientRect();
-    if (document.hidden || portrait.top >= window.innerHeight || portrait.bottom <= 0) return;
+    const frame = portraitFrame.getBoundingClientRect();
+    if (document.hidden || frame.top >= window.innerHeight || frame.bottom <= 0) return;
 
     window.clearTimeout(greetingTimer);
     greeting.hidden = true;
@@ -99,13 +109,35 @@
     playBells();
   }
 
-  nextPassageTimer = window.setTimeout(showPassage, 1_800);
+  function applyTheme(selection) {
+    theme = Object.hasOwn(themes, selection) ? selection : 'noel';
+    const christmas = theme === 'noel';
+    themeSelect.value = theme;
+    hero.classList.toggle('hero-noel', christmas);
+    if (portrait.getAttribute('src') !== themes[theme]) portrait.src = themes[theme];
+    soundButton.hidden = !christmas || !AudioEngine;
+    soundButton.setAttribute('aria-pressed', 'false');
+    soundEnabled = false;
+    stopSound();
+    window.clearTimeout(greetingTimer);
+    window.clearTimeout(nextPassageTimer);
+    greeting.hidden = true;
+    if (christmas) nextPassageTimer = window.setTimeout(showPassage, 1_800);
+  }
+
+  try { theme = window.localStorage.getItem('portfolio-theme') || 'noel'; } catch {}
+  applyTheme(theme);
+  themePicker.hidden = false;
+  themeSelect.addEventListener('change', () => {
+    applyTheme(themeSelect.value);
+    try { window.localStorage.setItem('portfolio-theme', theme); } catch {}
+  });
+
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopSound();
   });
 
   if (!AudioEngine) return;
-  soundButton.hidden = false;
   soundButton.addEventListener('click', async () => {
     if (soundEnabled) {
       soundEnabled = false;
@@ -118,7 +150,7 @@
     try {
       audio ??= new AudioEngine();
       await audio.resume();
-      soundEnabled = audio.state === 'running';
+      soundEnabled = audio.state === 'running' && theme === 'noel';
       soundButton.setAttribute('aria-pressed', String(soundEnabled));
       if (soundEnabled) showPassage();
     } catch {
