@@ -232,7 +232,8 @@
 }
 
 .theme-noel :is(#about, #portfolio, #contact) .section-title::before,
-.theme-noel :is(.cv-card, .skill-group) > :first-child::before {
+.theme-noel .cv-card > :first-child::before,
+.theme-noel .skill-group-conception::after {
   display: block;
   width: min(9rem, 65%);
   height: 1.35rem;
@@ -250,8 +251,68 @@
   pointer-events: none;
 }
 
-.theme-noel :is(.cv-card, .skill-group) > :first-child::before {
+.theme-noel .cv-card > :first-child::before {
   margin-block: -.4rem .65rem;
+}
+
+.theme-noel .skill-group-conception {
+  position: relative;
+}
+
+.theme-noel .skill-group-conception::after {
+  position: absolute;
+  inset-inline-end: .7rem;
+  inset-block-start: .6rem;
+  width: min(5.5rem, 32%);
+  margin: 0;
+  transform: rotate(24deg);
+}
+
+.skills-noel-decor { display: none; }
+
+.theme-noel .skills-noel-decor {
+  display: flex;
+  align-items: end;
+  gap: .35rem;
+  margin-top: auto;
+  padding-top: .35rem;
+  pointer-events: none;
+}
+
+.theme-noel .skills-noel-decor.noel-cadeaux {
+  align-self: flex-start;
+  transform: scale(.65);
+  transform-origin: bottom left;
+}
+
+.theme-noel .skills-noel-boules {
+  align-self: flex-end;
+  gap: .5rem;
+}
+
+.skills-noel-boules span {
+  --boule: #a72d3d;
+  position: relative;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 33% 26%, #ffffffa0, transparent 47%), var(--boule);
+  box-shadow: inset -.15rem -.18rem .28rem #0005;
+}
+
+.skills-noel-boules span:nth-child(2) { --boule: #b77d24; transform: translateY(-.3rem); }
+.skills-noel-boules span:nth-child(3) { --boule: #21704b; }
+
+.skills-noel-boules span::before {
+  position: absolute;
+  bottom: 96%;
+  left: 34%;
+  width: 32%;
+  height: .46rem;
+  border-top: 1px solid #b78a42;
+  border-radius: 60% 60% 1px 1px;
+  background: linear-gradient(90deg, transparent 43%, #b78a42 43% 57%, transparent 57%);
+  content: '';
 }
 
 @keyframes noel-passage {
