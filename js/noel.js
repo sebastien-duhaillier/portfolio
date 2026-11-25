@@ -3,8 +3,9 @@
   if (!hero) return;
 
   const snow = hero.querySelector('.noel-neige');
-  const themePicker = hero.querySelector('.choix-theme');
-  const themeSelect = themePicker.querySelector('select');
+  const displayControls = document.querySelector('.nav-affichage');
+  const themeSelect = displayControls.querySelector('select');
+  const darkButton = displayControls.querySelector('.mode-sombre');
   const portrait = hero.querySelector('#profile-img');
   const portraitFrame = hero.querySelector('.hero-image');
   const soundButton = hero.querySelector('.noel-son');
@@ -114,6 +115,7 @@
     const christmas = theme === 'noel';
     themeSelect.value = theme;
     hero.classList.toggle('hero-noel', christmas);
+    document.body.classList.toggle('theme-noel', christmas);
     if (portrait.getAttribute('src') !== themes[theme]) portrait.src = themes[theme];
     soundButton.hidden = !christmas || !AudioEngine;
     soundButton.setAttribute('aria-pressed', 'false');
@@ -127,10 +129,27 @@
 
   try { theme = window.localStorage.getItem('portfolio-theme') || 'noel'; } catch {}
   applyTheme(theme);
-  themePicker.hidden = false;
+  displayControls.hidden = false;
   themeSelect.addEventListener('change', () => {
     applyTheme(themeSelect.value);
     try { window.localStorage.setItem('portfolio-theme', theme); } catch {}
+  });
+
+  function applyAppearance(dark) {
+    document.documentElement.dataset.apparence = dark ? 'sombre' : 'claire';
+    darkButton.setAttribute('aria-pressed', String(dark));
+    darkButton.querySelector('.mode-sombre-icone').textContent = dark ? '☀' : '☾';
+    darkButton.querySelector('.mode-sombre-label').textContent = dark ? 'Clair' : 'Sombre';
+    darkButton.title = dark ? 'Passer en mode clair' : 'Passer en mode sombre';
+  }
+
+  let dark = false;
+  try { dark = window.localStorage.getItem('portfolio-apparence') === 'sombre'; } catch {}
+  applyAppearance(dark);
+  darkButton.addEventListener('click', () => {
+    dark = !dark;
+    applyAppearance(dark);
+    try { window.localStorage.setItem('portfolio-apparence', dark ? 'sombre' : 'claire'); } catch {}
   });
 
   document.addEventListener('visibilitychange', () => {

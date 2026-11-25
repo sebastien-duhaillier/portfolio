@@ -3,20 +3,44 @@
   background: radial-gradient(ellipse at 85% 20%, #dce9f4, transparent 65%), #f2f6fa;
 }
 
-.choix-theme {
-  position: absolute;
-  z-index: 3;
-  inset-block-start: 6.25rem;
-  inset-inline-start: clamp(1rem, 3vw, 2rem);
+.navbar.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 80, 0.06);
+}
+
+.nav-container:has(.nav-affichage:not([hidden])) {
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  gap: clamp(.45rem, 1vw, 1rem);
+}
+
+.nav-affichage {
+  display: inline-flex;
+  gap: .35rem;
+}
+
+.choix-theme,
+.mode-sombre {
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
-  padding: .2rem .35rem .2rem .6rem;
+  gap: .3rem;
+  min-height: 2.3rem;
+  padding: .15rem .45rem;
   border: 1px solid #bac6d5;
   border-radius: .5rem;
   background: #fff;
   color: var(--navy);
+  font: inherit;
   font-size: .78rem;
+  white-space: nowrap;
+}
+
+.mode-sombre {
+  cursor: pointer;
+}
+
+.mode-sombre-icone {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .choix-theme select {
@@ -88,13 +112,16 @@
 }
 
 .noel-cadeaux {
-  position: absolute;
-  inset-inline-end: max(0px, calc((100% - 420px) / 2 - 1.25rem));
-  inset-block-end: -.25rem;
   display: flex;
   align-items: end;
   gap: .35rem;
   pointer-events: none;
+}
+
+.hero-image .noel-cadeaux {
+  position: absolute;
+  inset-inline-end: max(0px, calc((100% - 420px) / 2 - 1.25rem));
+  inset-block-end: -.25rem;
 }
 
 .noel-cadeaux span {
@@ -166,8 +193,43 @@
   animation: noel-passage 7.6s linear both;
 }
 
-.choix-theme[hidden], .noel-son[hidden], .noel-message[hidden],
+.nav-affichage[hidden], .noel-son[hidden], .noel-message[hidden],
 .hero:not(.hero-noel) .noel-cadeaux, .hero:not(.hero-noel) .noel-neige { display: none; }
+
+.noel-interlude { display: none; }
+
+.theme-noel .noel-interlude {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.65rem, 2vw, 1.35rem);
+  padding: 1rem 0;
+  border-block: 1px solid var(--border);
+  background: var(--panel-light);
+  color: #a06a17;
+}
+
+.noel-interlude::before, .noel-interlude::after {
+  width: min(14vw, 7rem);
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+  content: '';
+}
+
+.theme-noel .section-title::after {
+  display: block;
+  width: 4rem;
+  height: .35rem;
+  margin: .65rem auto 0;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #a42331 33%, #d2a04a 33% 67%, #23734f 67%);
+  content: '';
+}
+
+.theme-noel .footer {
+  border-top: 3px solid #b58a43;
+}
 
 @keyframes noel-passage {
   from { transform: translateX(0); }
@@ -175,11 +237,95 @@
 }
 
 @media (max-width: 768px) {
-  .choix-theme { inset-block-start: 4.9rem; }
-  .noel-cadeaux { inset-inline-end: max(0px, calc((100% - min(300px, 70vw)) / 2 - .5rem)); }
+  .nav-container .hamburger { grid-column: -2; }
+  .nav-container .nav-menu { top: 72px; height: calc(100dvh - 72px); }
+  .hero-image .noel-cadeaux { inset-inline-end: max(0px, calc((100% - min(300px, 70vw)) / 2 - .5rem)); }
+}
+
+@media (max-width: 420px) {
+  .mode-sombre-label {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+  .nav-container:has(.nav-affichage:not([hidden])) .nav-logo-text { display: none; }
+  .nav-container:has(.nav-affichage:not([hidden])) .nav-logo-img { width: 48px; height: 48px; }
+  .nav-container:has(.nav-affichage:not([hidden])) .nav-menu { gap: .65rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .noel-neige { display: none; }
   .noel-message { left: 50%; transform: translateX(-50%); animation: none; }
+}
+
+html[data-apparence="sombre"] {
+  color-scheme: dark;
+  --page-bg: #111827;
+  --white: #1e293b;
+  --panel: #182235;
+  --panel-light: #1a2538;
+  --text: #e5ebf5;
+  --navy: #f0f4fc;
+  --muted: #b8c5d8;
+  --blue: #b4c7ff;
+  --purple: #d2b7ff;
+  --border: #445571;
+}
+
+[data-apparence="sombre"] :is(.navbar, .navbar.navbar-scrolled) {
+  background: #121b2b;
+  border-bottom-color: var(--border);
+  box-shadow: none;
+}
+
+[data-apparence="sombre"] :is(.hero, .portfolio, .about, .contact, .cv) {
+  background: var(--page-bg);
+}
+
+[data-apparence="sombre"] .hero.hero-noel {
+  background: radial-gradient(ellipse at 82% 16%, #273a4d, transparent 65%), var(--page-bg);
+}
+
+[data-apparence="sombre"] .hero-description { color: var(--text); }
+
+[data-apparence="sombre"] :is(.choix-theme, .mode-sombre, .noel-son, .project-card, .project-details-panel .project-col) {
+  background: var(--white);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-apparence="sombre"] .choix-theme option { background: var(--white); }
+
+[data-apparence="sombre"] :is(.noel-son[aria-pressed="true"], .mode-sombre[aria-pressed="true"], .professional-constraints) {
+  background: #2b3a55;
+  border-color: #899fd5;
+}
+
+[data-apparence="sombre"] :is(.hero-chips span, .project-tech span, .skill-badge, .project-details-panel .project-col ul li) {
+  background: #23334d;
+  color: #dbe5ff;
+  border-color: #5e7298;
+}
+
+[data-apparence="sombre"] .project-details summary { color: var(--blue); }
+[data-apparence="sombre"] .project-actions { border-color: var(--border); }
+[data-apparence="sombre"] :is(.btn-outline:hover, .project-actions a:hover, .project-actions a:focus-visible) { background: #283856; }
+
+[data-apparence="sombre"] :is(.btn-primary, .project-type, .professional-constraints-icon, .contact-item i, .social-link:hover) {
+  background: #3e55a4;
+  color: #fff;
+  border-color: #889eeb;
+}
+
+[data-apparence="sombre"] .btn-primary:hover { background: #4b63b4; }
+[data-apparence="sombre"] .project-link:hover { color: #182235; }
+[data-apparence="sombre"] :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
+[data-apparence="sombre"] :is(span[data-fs-error], div[data-fs-error]) { color: #ffabab; }
+[data-apparence="sombre"] div[data-fs-success] { color: #8ee3aa; }
+[data-apparence="sombre"] .footer { background: #0b1220; }
+[data-apparence="sombre"] .noel-interlude { color: #e4b968; }
+
+@media (max-width: 768px) {
+  [data-apparence="sombre"] .nav-menu { background: #121b2b; }
 }
