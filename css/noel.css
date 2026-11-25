@@ -1,0 +1,87 @@
+.hero-noel {
+  isolation: isolate;
+  background: radial-gradient(ellipse at 85% 20%, #e5edf9, transparent 60%), #f8fbff;
+}
+
+.noel-neige {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.noel-flocon {
+  position: absolute;
+  top: -.75rem;
+  left: var(--position);
+  width: var(--taille);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px #aec0dc70, 0 0 5px #91a9cf70;
+  animation: noel-chute var(--duree) linear var(--delai) infinite;
+}
+
+@keyframes noel-chute {
+  from { top: -.75rem; transform: translateX(0); opacity: 0; }
+  10%, 88% { opacity: .85; }
+  to { top: 100%; transform: translateX(var(--derive)); opacity: 0; }
+}
+
+.noel-son {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  min-height: 2.75rem;
+  padding: .45rem .8rem;
+  background: #fff;
+  border: 1px solid #a6b7d3;
+  border-radius: .5rem;
+  color: var(--navy);
+  cursor: pointer;
+  font: inherit;
+  font-size: .875rem;
+}
+
+.noel-son[aria-pressed="true"] {
+  background: #e4edff;
+  border-color: #526fa1;
+}
+
+.noel-son:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.hero-noel .hero-image { isolation: isolate; }
+
+.noel-message {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: .75rem;
+  inset-inline-end: max(.25rem, calc((100% - 420px) / 2 + .75rem));
+  margin: 0;
+  padding: .5rem .9rem;
+  border: 1px solid #e6cb8a;
+  border-radius: 999px;
+  background: #fffbef;
+  color: #233854;
+  box-shadow: 0 4px 14px #17345430;
+  font-weight: 700;
+  pointer-events: none;
+  animation: noel-passage 4.8s ease both;
+}
+
+.noel-son[hidden], .noel-message[hidden] { display: none; }
+
+@keyframes noel-passage {
+  0% { transform: translateX(clamp(2rem, 10vw, 7rem)); opacity: 0; }
+  26%, 70% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-3rem); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noel-neige { display: none; }
+  .noel-message { animation: none; }
+}

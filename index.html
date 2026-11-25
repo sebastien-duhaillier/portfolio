@@ -9,6 +9,7 @@
     <meta property="og:description" content="Projets full stack, outils métier et parcours de développeur web et webmestre.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/style.css?v=13">
+    <link rel="stylesheet" href="css/noel.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -42,7 +43,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero hero-noel">
+        <div class="noel-neige" aria-hidden="true"></div>
         <div class="hero-content">
             <h1 class="hero-title">Bonjour, je suis<br><span class="highlight">Sébastien Duhaillier</span></h1>
             <h2 class="hero-job-title">Développeur web &amp; webmestre</h2>
@@ -54,9 +56,13 @@
                 <a href="#contact" class="btn btn-outline">Me contacter</a>
             </div>
             <div class="hero-chips" aria-label="Domaines de compétences"><span>Full Stack</span><span>JavaScript / TypeScript</span><span>Node.js</span><span>Bases de données</span></div>
+            <button class="noel-son" type="button" aria-pressed="false" hidden>
+                <span aria-hidden="true">🔔</span> Clochettes de Noël
+            </button>
         </div>
         <div class="hero-image">
-            <img src="assets/photo.jpg" alt="Photo de profil - Sébastien Duhaillier" id="profile-img">
+            <img src="assets/photo-noel.webp" alt="Portrait de Sébastien Duhaillier devant une haie illuminée" id="profile-img">
+            <p class="noel-message" aria-hidden="true" hidden>Joyeux Noël !</p>
         </div>
     </section>
 
@@ -574,5 +580,6 @@
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script src="js/main.js"></script>
+    <script src="js/noel.js" defer></script>
 </body>
 </html>
