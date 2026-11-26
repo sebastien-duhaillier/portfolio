@@ -430,3 +430,9 @@ html[data-apparence="sombre"] {
   background: #ffdd76;
   clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
 }
+
+@media (any-pointer: fine) and (min-width: 1200px) {
+  .theme-noel {
+    --noel-baguette: url("../assets/noel-baguette-large.svg") 8 8;
+  }
+}
