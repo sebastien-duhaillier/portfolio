@@ -162,6 +162,22 @@
     void santa.play().catch(() => {});
   }, { capture: true });
 
+  const cursorMotion = window.matchMedia('(any-pointer: fine) and (prefers-reduced-motion: no-preference)');
+  document.addEventListener('pointerdown', (event) => {
+    if (theme !== 'noel' || !cursorMotion.matches || event.pointerType !== 'mouse' || event.button !== 0) return;
+
+    const sparkle = document.createElement('span');
+    sparkle.className = 'noel-etincelle';
+    sparkle.style.left = `${event.clientX}px`;
+    sparkle.style.top = `${event.clientY}px`;
+    document.body.append(sparkle);
+    const animation = sparkle.animate([
+      { transform: 'translate(-50%, -50%) scale(.45)', opacity: 1 },
+      { transform: 'translate(-50%, -50%) scale(1.4) rotate(30deg)', opacity: 0 },
+    ], { duration: 330, easing: 'ease-out' });
+    animation.finished.then(() => sparkle.remove(), () => sparkle.remove());
+  });
+
   if (!AudioEngine) return;
   soundButton.addEventListener('click', async () => {
     if (soundEnabled) {

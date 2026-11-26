@@ -409,3 +409,24 @@ html[data-apparence="sombre"] {
 @media (max-width: 768px) {
   [data-apparence="sombre"] .nav-menu { background: #121b2b; }
 }
+
+@media (any-pointer: fine) {
+  .theme-noel {
+    --noel-baguette: url("../assets/noel-baguette.svg") 5 5;
+    cursor: var(--noel-baguette), auto;
+  }
+
+  .theme-noel :is(a[href], button:not(:disabled), summary, select, label[for]) {
+    cursor: var(--noel-baguette), pointer;
+  }
+}
+
+.noel-etincelle {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  background: #ffdd76;
+  clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
+}
