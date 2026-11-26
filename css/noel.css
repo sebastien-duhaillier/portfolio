@@ -119,10 +119,9 @@
   pointer-events: none;
 }
 
-.hero-image .noel-cadeaux {
-  position: absolute;
-  inset-inline-end: max(0px, calc((100% - 420px) / 2 - 1.25rem));
-  inset-block-end: -.25rem;
+.hero-noel .hero-image {
+  flex-direction: column;
+  gap: .55rem;
 }
 
 .noel-message {
@@ -201,31 +200,40 @@
   aspect-ratio: 3 / 1;
   margin: 0 auto .45rem;
   background:
-    radial-gradient(ellipse 4.8% 13% at 9% 38%, rgb(255 145 104 / var(--noel-lueur-a, 0)), transparent),
-    radial-gradient(ellipse 4.8% 13% at 19.5% 51%, rgb(255 219 110 / var(--noel-lueur-b, 0)), transparent),
-    radial-gradient(ellipse 4.8% 13% at 36.7% 69%, rgb(98 220 255 / var(--noel-lueur-a, 0)), transparent),
-    radial-gradient(ellipse 4.8% 13% at 49% 74%, rgb(221 146 255 / var(--noel-lueur-b, 0)), transparent),
-    radial-gradient(ellipse 4.8% 13% at 77.3% 54%, rgb(122 255 174 / var(--noel-lueur-a, 0)), transparent),
-    radial-gradient(ellipse 4.8% 13% at 92% 38%, rgb(221 146 255 / var(--noel-lueur-b, 0)), transparent),
+    radial-gradient(ellipse 7% 19% at 9% 38%, rgb(255 242 222 / var(--noel-lueur-a, 0)), rgb(255 91 62 / var(--noel-lueur-a, 0)) 23%, transparent 80%),
+    radial-gradient(ellipse 7% 19% at 19.5% 51%, rgb(255 251 225 / var(--noel-lueur-b, 0)), rgb(255 209 63 / var(--noel-lueur-b, 0)) 23%, transparent 80%),
+    radial-gradient(ellipse 7% 19% at 36.7% 69%, rgb(223 250 255 / var(--noel-lueur-a, 0)), rgb(53 200 255 / var(--noel-lueur-a, 0)) 23%, transparent 80%),
+    radial-gradient(ellipse 7% 19% at 49% 74%, rgb(252 228 255 / var(--noel-lueur-b, 0)), rgb(224 114 255 / var(--noel-lueur-b, 0)) 23%, transparent 80%),
+    radial-gradient(ellipse 7% 19% at 77.3% 54%, rgb(221 255 231 / var(--noel-lueur-a, 0)), rgb(64 239 135 / var(--noel-lueur-a, 0)) 23%, transparent 80%),
+    radial-gradient(ellipse 7% 19% at 92% 38%, rgb(252 228 255 / var(--noel-lueur-b, 0)), rgb(224 114 255 / var(--noel-lueur-b, 0)) 23%, transparent 80%),
     url('../assets/noel-guirlande-sapin.webp') center / 100% 100% no-repeat;
   filter: drop-shadow(0 .22rem .3rem #14261750);
   content: '';
   pointer-events: none;
 }
 
+.theme-noel :is(#about, #portfolio, #contact) .section-title::before {
+  width: min(27rem, 76vw, 95%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .theme-noel :is(#about, #portfolio, #contact) .section-title::before,
   .theme-noel .cv-card > :first-child::before,
   .theme-noel .skill-group-conception::after {
-    animation: noel-scintillement 7s ease-in-out infinite;
+    animation: noel-scintillement 5s ease-in-out infinite;
+  }
+
+  .theme-noel :is(#portfolio, #contact) .section-title::before {
+    animation-delay: -1.25s;
   }
 }
 
 @keyframes noel-scintillement {
-  0%, 100% { --noel-lueur-a: 0; --noel-lueur-b: 0; }
-  23% { --noel-lueur-a: .44; --noel-lueur-b: .04; }
-  50% { --noel-lueur-a: .06; --noel-lueur-b: .4; }
-  76% { --noel-lueur-a: .23; --noel-lueur-b: 0; }
+  0%, 100% { --noel-lueur-a: .04; --noel-lueur-b: 0; }
+  22% { --noel-lueur-a: .92; --noel-lueur-b: .04; }
+  45% { --noel-lueur-a: .04; --noel-lueur-b: .12; }
+  70% { --noel-lueur-a: 0; --noel-lueur-b: .92; }
+  87% { --noel-lueur-a: .04; --noel-lueur-b: .28; }
 }
 
 .theme-noel .cv-card > :first-child::before {
@@ -300,7 +308,6 @@
 @media (max-width: 768px) {
   .nav-container .hamburger { grid-column: -2; }
   .nav-container .nav-menu { top: 72px; height: calc(100dvh - 72px); }
-  .hero-image .noel-cadeaux { inset-inline-end: max(0px, calc((100% - min(300px, 70vw)) / 2 - .5rem)); }
 }
 
 @media (max-width: 420px) {
