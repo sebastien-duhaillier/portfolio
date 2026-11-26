@@ -14,6 +14,10 @@
   // The Bells of Santa Claus, BrianJamesLong (Freesound, CC0).
   // https://freesound.org/people/BrianJamesLong/sounds/330415/
   const bellsUrl = new URL('../assets/clochettes-noel.mp3', document.currentScript.src);
+  // SantaClaus_HoHoHo.wav, Bollenator (Freesound, CC0), recadré sur un seul rire.
+  // https://freesound.org/people/Bollenator/sounds/325180/
+  const santa = new Audio(new URL('../assets/ho-ho-ho-noel.mp3', document.currentScript.src).href);
+  santa.preload = 'none';
   const themes = {
     noel: 'assets/photo-noel-decor.webp',
     normal: 'assets/photo.jpg',
@@ -111,6 +115,7 @@
     soundButton.setAttribute('aria-pressed', 'false');
     soundEnabled = false;
     stopSound();
+    if (!christmas) santa.pause();
     window.clearTimeout(greetingTimer);
     window.clearTimeout(nextPassageTimer);
     greeting.hidden = true;
@@ -143,8 +148,19 @@
   });
 
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopSound();
+    if (document.hidden) {
+      stopSound();
+      santa.pause();
+    }
   });
+
+  document.addEventListener('click', (event) => {
+    if (theme !== 'noel' || !santa.paused) return;
+    if (!event.target.closest?.('button:not(:disabled), a.btn[href]')) return;
+    santa.currentTime = 0;
+    // Keep the control's default action even if the browser blocks audio.
+    void santa.play().catch(() => {});
+  }, { capture: true });
 
   if (!AudioEngine) return;
   soundButton.addEventListener('click', async () => {
