@@ -14,9 +14,9 @@
   // The Bells of Santa Claus, BrianJamesLong (Freesound, CC0).
   // https://freesound.org/people/BrianJamesLong/sounds/330415/
   const bellsUrl = new URL('../assets/clochettes-noel.mp3', document.currentScript.src);
-  // SantaClaus_HoHoHo.wav, Bollenator (Freesound, CC0), recadré sur un seul rire.
+  // SantaClaus_HoHoHo.wav, Bollenator (Freesound, CC0), une seule prise complète.
   // https://freesound.org/people/Bollenator/sounds/325180/
-  const santa = new Audio(new URL('../assets/ho-ho-ho-noel.mp3', document.currentScript.src).href);
+  const santa = new Audio(new URL('../assets/ho-ho-ho-merry-christmas.mp3', document.currentScript.src).href);
   santa.preload = 'none';
   const themes = {
     noel: 'assets/photo-noel-decor.webp',
