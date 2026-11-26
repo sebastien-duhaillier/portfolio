@@ -11,6 +11,9 @@
   const soundButton = hero.querySelector('.noel-son');
   const greeting = document.querySelector('.noel-message');
   const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  // The Bells of Santa Claus, BrianJamesLong (Freesound, CC0).
+  // https://freesound.org/people/BrianJamesLong/sounds/330415/
+  const bellsUrl = new URL('../assets/clochettes-noel.mp3', document.currentScript.src);
   const themes = {
     noel: 'assets/photo-noel-decor.webp',
     normal: 'assets/photo.jpg',
@@ -19,10 +22,12 @@
   const duration = 7_600;
   let theme = 'noel';
   let audio;
+  let bells;
   let soundEnabled = false;
   let passage;
   let greetingTimer;
   let nextPassageTimer;
+  let themeVersion = 0;
 
   for (let i = 0; i < 46; i++) {
     const flake = document.createElement('span');
@@ -37,10 +42,13 @@
 
   function stopSound() {
     if (!passage) return;
-    const { gain } = passage;
-    gain.cancelScheduledValues(audio.currentTime);
-    gain.setTargetAtTime(0, audio.currentTime, 0.025);
+    const { master, source } = passage;
     passage = undefined;
+    const now = audio.currentTime;
+    if (master.gain.cancelAndHoldAtTime) master.gain.cancelAndHoldAtTime(now);
+    else master.gain.cancelScheduledValues(now);
+    master.gain.setTargetAtTime(0, now, 0.025);
+    source.stop(now + 0.1);
   }
 
   function playBells() {
@@ -48,9 +56,12 @@
     stopSound();
 
     const start = audio.currentTime;
-    const length = duration / 1_000;
+    const length = Math.min(bells.duration, duration / 1_000);
+    const source = audio.createBufferSource();
     const master = audio.createGain();
     const panner = audio.createStereoPanner?.();
+    source.buffer = bells;
+    source.connect(master);
     if (panner) {
       master.connect(panner).connect(audio.destination);
       panner.pan.setValueAtTime(0.86, start);
@@ -59,38 +70,16 @@
       master.connect(audio.destination);
     }
     master.gain.setValueAtTime(0.002, start);
-    master.gain.exponentialRampToValueAtTime(0.125, start + length * 0.45);
+    master.gain.exponentialRampToValueAtTime(0.34, start + length * 0.45);
     master.gain.exponentialRampToValueAtTime(0.001, start + length);
-    passage = master;
-
-    const rhythm = [0.1, 0.32, 0.65, 0.87, 1.24, 1.44, 1.77, 1.99, 2.36, 2.55,
-      2.9, 3.12, 3.47, 3.68, 4.03, 4.24];
-    const tones = [740, 880, 988, 831, 1_109];
-    const partials = [1, 2.41, 3.56];
-    rhythm.forEach((offset, index) => {
-      partials.forEach((ratio, partial) => {
-        const strike = start + offset * (length - 0.5) / rhythm.at(-1);
-        const tail = 0.43 - partial * 0.08;
-        const oscillator = audio.createOscillator();
-        const volume = audio.createGain();
-        oscillator.frequency.value = tones[index % tones.length] * ratio;
-        volume.gain.setValueAtTime(0.001, strike);
-        volume.gain.linearRampToValueAtTime(0.45 / (partial + 1), strike + 0.008);
-        volume.gain.exponentialRampToValueAtTime(0.001, strike + tail);
-        oscillator.connect(volume).connect(master);
-        oscillator.start(strike);
-        oscillator.stop(strike + tail);
-        oscillator.onended = () => {
-          oscillator.disconnect();
-          volume.disconnect();
-          if (index === rhythm.length - 1 && partial === 0) {
-            if (passage === master) passage = undefined;
-            master.disconnect();
-            panner?.disconnect();
-          }
-        };
-      });
-    });
+    passage = { master, source };
+    source.onended = () => {
+      if (passage?.source === source) passage = undefined;
+      source.disconnect();
+      master.disconnect();
+      panner?.disconnect();
+    };
+    source.start(start, 0, length);
   }
 
   function showPassage() {
@@ -111,6 +100,7 @@
   }
 
   function applyTheme(selection) {
+    themeVersion++;
     theme = Object.hasOwn(themes, selection) ? selection : 'noel';
     const christmas = theme === 'noel';
     themeSelect.value = theme;
@@ -165,14 +155,22 @@
       return;
     }
 
+    const requestedThemeVersion = themeVersion;
     soundButton.disabled = true;
+    soundButton.title = '';
     try {
       audio ??= new AudioEngine();
       await audio.resume();
-      soundEnabled = audio.state === 'running' && theme === 'noel';
+      if (!bells) {
+        const response = await fetch(bellsUrl);
+        if (!response.ok) throw new Error('Clochettes introuvables.');
+        bells = await audio.decodeAudioData(await response.arrayBuffer());
+      }
+      soundEnabled = audio.state === 'running' && theme === 'noel' && themeVersion === requestedThemeVersion;
       soundButton.setAttribute('aria-pressed', String(soundEnabled));
       if (soundEnabled) showPassage();
     } catch {
+      soundButton.title = 'Le son est indisponible. Clique pour réessayer.';
       soundButton.setAttribute('aria-pressed', 'false');
     } finally {
       soundButton.disabled = false;
